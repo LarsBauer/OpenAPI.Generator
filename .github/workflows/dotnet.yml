@@ -4,9 +4,11 @@ on:
   push:
     branches: main
 
-jobs:
-  build:
+env:
+  BUILD_CONFIGURATON: Release
 
+jobs:
+  prepare:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,15 +24,27 @@ jobs:
       with:
         nuget-api-key: ${{ secrets.NUGET_API_KEY }}
 
+  build:
+    runs-on: ubuntu-latest
+    needs: [prepare]
+    steps:
     - name: Build
-      run: dotnet build --configuration Release
+      run: dotnet build --configuration $BUILD_CONFIGURATION
       
+  test:
+   runs-on: ubuntu-latest
+   needs: [build]
+   steps:
     - name: Test
-      run: dotnet test --no-build
+      run: dotnet test --no-build --configuration $BUILD_CONFIGURATION
       
+  publish:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:  
     - name: Pack
-      run: dotnet pack --no-build --output ./nupkgs
+      run: dotnet pack --no-build --configuration $BUILD_CONFIGURATION --output ./nupkgs
     
     - name: Push NuGet package
-      run: dotnet nuget push ./nupkgs/*.nupkg
+      run: dotnet nuget push ./nupkgs/*.nupkg --skip-duplicate
     

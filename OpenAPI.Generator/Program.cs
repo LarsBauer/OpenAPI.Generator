@@ -14,7 +14,7 @@ namespace OpenAPI.Generator
     {
         static int Main(string[] args)
         {
-            var rootCommand = new RootCommand("My description")
+            var rootCommand = new RootCommand(".NET tool to generate OpenAPI documents from C# annotations")
             {
                 new Option<FileInfo[]>("--annotation-xml", "Path to a annotation XML documentation file.")
                         { IsRequired = true }

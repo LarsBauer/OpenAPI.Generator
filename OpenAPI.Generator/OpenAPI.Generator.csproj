@@ -6,6 +6,14 @@
 
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>openapi-gen</ToolCommandName>
+    
+    <PackageId>BauerApps.OpenAPI.Generator</PackageId>
+    <Version>1.0.1</Version>
+    <Description>.NET tool to generate OpenAPI documents from C# annotations</Description>
+    <Authors>Lars Bauer</Authors>
+    <RepositoryUrl>https://github.com/LarsBauer/OpenAPI.Generator.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/LarsBauer/OpenAPI.Generator</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>

@@ -5,7 +5,7 @@ on:
     branches: main
 
 env:
-  BUILD_CONFIGURATON: Release
+  BUILD_CONFIGURATION: Release
 
 jobs:
   prepare:
